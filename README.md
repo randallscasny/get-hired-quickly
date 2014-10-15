@@ -7,8 +7,8 @@ file at the root of this repository. Copy .env.example and fill it with your own
 secret credentials.
 
 Once you've done that...
-``
+```
 bundle install
 
 dotenv s3_website push --headless
-``
+```
