@@ -9,5 +9,6 @@ secret credentials.
 Once you've done that...
 ``
 bundle install
+
 dotenv s3_website push --headless
 ``
