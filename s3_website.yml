@@ -6,13 +6,7 @@ s3_secret: <%= ENV['S3_SECRET'] %>
 s3_bucket: <%= ENV['S3_BUCKET'] %>
 cloudfront_distribution_id: <%= ENV['CLOUDFRONT_DISTRIBUTION_ID'] %>
 
-# max_age:
-#   "assets/*": 6000
-#   "*": 300
-
-gzip:
-  - .html
-  - .css
-gzip_zopfli: true
-
+max_age: 300
+gzip: true
 s3_reduced_redundancy: true
+path: _site
