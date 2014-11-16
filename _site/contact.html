@@ -37,7 +37,7 @@
 
 		<!-- Head Libs -->
 		<script src="vendor/modernizr/modernizr.js"></script>
-		
+
 		<!-- Favicon -->
 		<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
@@ -208,9 +208,10 @@
 
 								<div class="alert alert-danger hidden" id="newsletterError"></div>
 
-								<form id="newsletterForm" action="php/newsletter-subscribe.php" method="POST">
+								<form id="newsletterForm" accept-charset="UTF-8" action="https://formkeep.com/f/7c3dd660efd8" method="POST">
+									<input type="hidden" name="utf8" value="✓">
 									<div class="input-group">
-										<input class="form-control" placeholder="Email Address" name="newsletterEmail" id="newsletterEmail" type="text">
+										<input class="form-control" placeholder="Email Address" name="email" id="newsletterEmail" type="text">
 										<span class="input-group-btn">
 											<button class="btn btn-default" type="submit">Go!</button>
 										</span>
