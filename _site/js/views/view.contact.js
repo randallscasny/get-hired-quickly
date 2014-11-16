@@ -32,52 +32,29 @@ Version: 		3.3.1
 					subject: $form.find('#subject').val(),
 					message: $form.find('#message').val()
 				},
-				dataType: 'jsonp',
-				complete: function(data) {
+				dataType: 'json',
+				complete: function(data, textStatus) {
 
-					if (data.statusText == 'success') {
+					$messageSuccess.removeClass('hidden');
+					$messageError.addClass('hidden');
 
-						$messageSuccess.removeClass('hidden');
-						$messageError.addClass('hidden');
+					// Reset Form
+					$form.find('.form-control')
+						.val('')
+						.blur()
+						.parent()
+						.removeClass('has-success')
+						.removeClass('has-error')
+						.find('label.error')
+						.remove();
 
-						// Reset Form
-						$form.find('.form-control')
-							.val('')
-							.blur()
-							.parent()
-							.removeClass('has-success')
-							.removeClass('has-error')
-							.find('label.error')
-							.remove();
-
-						if (($messageSuccess.offset().top - 80) < $(window).scrollTop()) {
-							$('html, body').animate({
-								scrollTop: $messageSuccess.offset().top - 80
-							}, 300);
-						}
-
-						$submitButton.button('reset');
-
-						return;
-
-					} else {
-
-						$messageError.removeClass('hidden');
-						$messageSuccess.addClass('hidden');
-
-						if (($messageError.offset().top - 80) < $(window).scrollTop()) {
-							$('html, body').animate({
-								scrollTop: $messageError.offset().top - 80
-							}, 300);
-						}
-
-						$form.find('.has-success')
-							.removeClass('has-success');
-
-						$submitButton.button('reset');
-
+					if (($messageSuccess.offset().top - 80) < $(window).scrollTop()) {
+						$('html, body').animate({
+							scrollTop: $messageSuccess.offset().top - 80
+						}, 300);
 					}
 
+					$submitButton.button('reset');
 				}
 			});
 		}
