@@ -26,15 +26,16 @@ Version: 		3.3.1
 				type: 'POST',
 				url: $form.attr('action'),
 				data: {
+					utf8: $form.find('#utf8').val(),
 					name: $form.find('#name').val(),
 					email: $form.find('#email').val(),
 					subject: $form.find('#subject').val(),
 					message: $form.find('#message').val()
 				},
-				dataType: 'json',
+				dataType: 'jsonp',
 				complete: function(data) {
-				
-					if (data.responseJSON.response == 'success') {
+
+					if (data.statusText == 'success') {
 
 						$messageSuccess.removeClass('hidden');
 						$messageError.addClass('hidden');
@@ -56,7 +57,7 @@ Version: 		3.3.1
 						}
 
 						$submitButton.button('reset');
-						
+
 						return;
 
 					} else {
@@ -72,7 +73,7 @@ Version: 		3.3.1
 
 						$form.find('.has-success')
 							.removeClass('has-success');
-							
+
 						$submitButton.button('reset');
 
 					}
