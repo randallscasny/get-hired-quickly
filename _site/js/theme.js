@@ -1752,9 +1752,9 @@ window.theme = {};
 
 // Word Rotate
 (function(theme, $) {
-	
+
 	theme = theme || {};
-	
+
 	var instanceName = '__wordRotate';
 
 	var PluginWordRotate = function($el, opts) {
@@ -1851,7 +1851,7 @@ window.theme = {};
 			} else {
 				return new PluginWordRotate($this, opts);
 			}
-			
+
 		});
 	}
 
@@ -2151,41 +2151,38 @@ window.theme = {};
 					$error = $('#newsletterError');
 
 				self.$wrapper.validate({
+					invalidHandler: function(event, validator) {
+						$error.text(validator.errorList[0].message)
+						$error.removeClass("hidden");
+						$success.addClass('hidden');
+						$email
+							.blur()
+							.closest('.control-group')
+							.removeClass('success')
+							.addClass('error');
+					},
 					submitHandler: function(form) {
 
 						$.ajax({
 							type: 'POST',
 							url: self.$wrapper.attr('action'),
+
 							data: {
-								'email': $email.val()
+								email: $email.val(),
+								utf8: $('form').find('input[name=utf8]').val(),
 							},
 							dataType: 'json',
-							success: function(data) {
-								if (data.response == 'success') {
+							complete: function(data) {
 
-									$success.removeClass('hidden');
-									$error.addClass('hidden');
+								$success.removeClass('hidden');
+								$error.addClass('hidden');
 
-									$email
-										.val('')
-										.blur()
-										.closest('.control-group')
-										.removeClass('success')
-										.removeClass('error');
-
-								} else {
-
-									$error.html(data.message);
-									$error.removeClass('hidden');
-									$success.addClass('hidden');
-
-									$email
-										.blur()
-										.closest('.control-group')
-										.removeClass('success')
-										.addClass('error');
-
-								}
+								$email
+									.val('')
+									.blur()
+									.closest('.control-group')
+									.removeClass('success')
+									.removeClass('error');
 							}
 						});
 
@@ -2388,7 +2385,7 @@ window.theme = {};
 					}, 200, function() {
 						$.event.trigger({
 							type: "stickyMenu.active"
-						});						
+						});
 					});
 
 				}
@@ -2413,7 +2410,7 @@ window.theme = {};
 						}, 200, function() {
 						$.event.trigger({
 							type: "stickyMenu.deactive"
-						});						
+						});
 					});
 
 					}
