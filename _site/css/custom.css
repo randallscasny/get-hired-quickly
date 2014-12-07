@@ -1,1 +1,26 @@
 /* Add here all your CSS customizations */
+
+#header .logo-sticky-active a.logo-link {
+  top: 28px;
+}
+
+#header .logo a {
+  text-decoration: none;
+}
+
+body .logo-normal {
+  display: inline-block !important;
+}
+
+body .logo-sticky {
+  display: none !important;
+}
+
+body.sticky-menu-active .logo-normal {
+  display: none !important;
+}
+
+body.sticky-menu-active .logo-sticky {
+  display: inline-block !important;
+  img { height: 100%; width: 100% }
+}

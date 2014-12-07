@@ -2279,7 +2279,7 @@ window.theme = {};
 				stickyEnableOnMobile: false,
 				menuAfterHeader: false,
 				logoPaddingTop: 28,
-				logoSmallWidth: 82,
+				logoSmallWidth: 40,
 				logoSmallHeight: 40
 			},
 
